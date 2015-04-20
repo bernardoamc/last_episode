@@ -2,21 +2,27 @@ defmodule LastEpisode.Fetch do
   @valid_extensions [".avi", ".mkv", ".mov", ".mp4", ".m4p", ".m4v", ".wmv", ".rmvb"]
 
   @moduledoc """
-  Returns the last episode in the specified folder or subfolder.
+  For now the program expects a path with each subfolder corresponding
+  to one serie. A direct subfolder of the specified path can have any
+  number of subfolder it wants.
 
-  The expected structure of the searched path is:
+  So, the expected folder structure is something like:
 
-  path
-    series_1
+  path/
+    series_1/
       episode_1
       episode_2
+      episode_3_folder/
+        episode_3
       ...
-    series_2
+    series_2/
       episode_1
+      episode_2_folder/
+        episode_2
       ...
 
-  Returns the last episode of the specified path or the last episode of each
-  subfolder in the specified path.
+  Returns the last episode of each subfolder in specified path or
+  'Episode not found' in case there is no video file in the subfolder.
   """
 
   def main(argv) do
